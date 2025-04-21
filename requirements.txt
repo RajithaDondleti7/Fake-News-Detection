@@ -21,7 +21,7 @@ MarkupSafe==2.0.1
 matplotlib==3.10.1
 newsapi-python==0.2.7
 nltk==3.9.1
-numpy==1.21.6
+numpy==1.26.4
 outcome==1.3.0.post0
 packaging==24.2
 pandas==1.3.5
