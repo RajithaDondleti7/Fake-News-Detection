@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Fake News Detection</title>
+  </head>
+  <body class="bg-gray-200">
+    <header class="text-gray-600 body-font -my-8">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Fake News Detection</span>
+          </a>
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a href="/" class="mr-5 hover:text-gray-900">Home</a>
+            <a href="#about"class="mr-5 hover:text-gray-900">About us</a>
+            <a href="/prediction" class="mr-5 hover:text-gray-900">prediction</a>
+            <a class="mr-5 hover:text-gray-900">contact us</a>
+          </nav>
+        </div>
+      </header>
+      
+<hr><marquee><a href="{{ url_for('static', filename='data/news.csv') }}"
+  class="text-blue-600 underline hover:text-blue-800"
+  download>
+  Download Sample CSV
+</a>
+</marquee>
+      <section class="text-gray-600 body-font">
+        <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+          
+          <!-- Left Content -->
+          <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+            <h1 class="title-font sm:text-5xl text-4xl font-bold mb-6 text-gray-900">
+              Fake News Detection  
+              <br class="hidden lg:inline-block">Machine Learning Project
+            </h1>
+            <p class="mb-6 leading-relaxed text-lg text-gray-700">
+              Empowering truth with machine learning. Detect fake news with accuracy and reliability, ensuring a more informed digital world.
+            </p>
+            <div class="flex justify-center">
+              <a href="/prediction">
+                <button class="inline-flex text-white bg-green-500 border-0 py-3 px-8 focus:outline-none hover:bg-green-600 rounded-lg text-lg shadow-md transition duration-300 ease-in-out">
+                  Predict Now
+                </button>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Right Image -->
+          <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+            <img class="object-cover object-center rounded-lg shadow-lg" alt="Fake News Detection" src="../static/image.svg">
+          </div>
+          
+        </div>
+      </section>
+      
+      
+
+      <section class="news-sources-container" style="background-color: #edf2f7; padding: 40px 20px; text-align: center; font-size: 1.1rem; color: #2d3748; border-radius: 8px; margin-top: 40px;">
+        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 20px; color: #2d3748;">We will check the authenticity of news from the following top websites:</h2>
+        <div class="news-sources-list" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;">
+          
+          <a href="https://timesofindia.indiatimes.com/" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              Times of India
+            </div>
+          </a>
+      
+          <a href="https://www.ndtv.com/" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              NDTV
+            </div>
+          </a>
+      
+          <a href="https://www.bbc.com/news" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              BBC
+            </div>
+          </a>
+      
+          <a href="https://edition.cnn.com/" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              CNN
+            </div>
+          </a>
+      
+          <a href="https://www.hindustantimes.com/" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              Hindustan Times
+            </div>
+          </a>
+      
+        </div>
+      </section>
+      
+<br><br><br><br>
+      <section class="text-gray-600 body-font">
+        <div class="container mx-auto text-center px-4">
+            <h2 class="text-4xl font-bold text-gray-800 mb-8">What Our Customers Say</h2>
+            
+    
+            <!-- Testimonials Wrapper -->
+            <div class="flex flex-wrap justify-center gap-6">
+                
+                <!-- Testimonial Card -->
+                <div class="w-full md:w-1/3 lg:w-1/4 bg-white rounded-2xl shadow-lg p-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://static.vecteezy.com/system/resources/previews/049/530/513/non_2x/cartoon-illustration-of-a-young-man-with-glasses-working-on-a-laptop-depicting-a-modern-professional-or-student-vector.jpg" alt="User" class="w-16 h-16 rounded-full border-2 border-gray-300">
+                        <p class="text-gray-600 text-center italic my-4">"This platform is amazing! It has helped me manage my tasks efficiently and saved me so much time."</p>
+                        <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
+                        <h3 class="text-gray-800 font-semibold mt-2">John Doe</h3>
+                        <p class="text-gray-500 text-sm">Software Engineer</p>
+                    </div>
+                </div>
+    
+                <!-- Testimonial Card 2 -->
+                <div class="w-full md:w-1/3 lg:w-1/4 bg-white rounded-2xl shadow-lg p-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://static.vecteezy.com/system/resources/previews/028/597/534/non_2x/young-cartoon-female-avatar-student-character-wearing-eyeglasses-file-no-background-ai-generated-png.png" alt="User" class="w-16 h-16 rounded-full border-2 border-gray-300">
+                        <p class="text-gray-600 text-center italic my-4">"This Fake News Detection Platform is incredible! It helps verify news authenticity quickly and prevents the spread of misinformation."</p>
+                        <div class="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
+                        <h3 class="text-gray-800 font-semibold mt-2">Ellyse</h3>
+                        <p class="text-gray-500 text-sm">Data Scientist</p>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    <br><br><br><br>
+    <br><br>
+      <section class="text-gray-600 body-font -my-8">
+        <div class="container px-5 py-24 mx-auto">
+          <h1 class="sm:text-3xl text-2xl font-medium title-font text-center text-gray-900 mb-20">"Separating Fact from Fiction with Machine Learning."
+            <br class="hidden sm:block">
+          </h1>
+          <div class="flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6">
+            <div class="p-4 md:w-1/3 flex">
+              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 mb-4 flex-shrink-0">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+              </div>
+              <div class="flex-grow pl-6">
+                <h2 class="text-gray-900 text-lg title-font font-medium mb-2">Understanding Fake News</h2>
+                <p class="leading-relaxed text-base">Fake news is misleading or false information disguised as legitimate news. It spreads rapidly through social media, influencing opinions and shaping public discourse. Recognizing credible sources and verifying facts is crucial to combat misinformation.</p>
+                <a href="https://en.wikipedia.org/wiki/Fake_news" target="_blank" class="mt-3 text-green-500 inline-flex items-center">Learn More
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+                
+              </div>
+            </div>
+            <div class="p-4 md:w-1/3 flex">
+              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 mb-4 flex-shrink-0">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                  <circle cx="6" cy="6" r="3"></circle>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+                </svg>
+              </div>
+              <div class="flex-grow pl-6">
+                <h2 class="text-gray-900 text-lg title-font font-medium mb-2">How AI Detects Fake News</h2>
+                <p class="leading-relaxed text-base">AI analyzes news content using machine learning and Natural Language Processing (NLP) to identify patterns of misinformation. It evaluates language, tone, and source credibility to detect fake news. AI-powered fact-checking tools help prevent the spread of false information.</p>
+                <a href=" https://www.google.com/search?q=How+AI+Detects+Fake+News&oq=How+AI+Detects+Fake+News&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MggIARAAGBYYHjIICAIQABgWGB4yCAgDEAAYFhgeMg0IBBAAGIYDGIAEGIoFMg0IBRAAGIYDGIAEGIoFMg0IBhAAGIYDGIAEGIoFMgoIBxAAGIAEGKIEMgoICBAAGIAEGKIEMgoICRAAGIAEGKIE0gEIMTgxNGowajeoAgiwAgHxBcT-un4--Suo8QXE_rp-PvkrqA&sourceid=chrome&ie=UTF-8"  class="mt-3 text-green-500 inline-flex items-center">Learn More
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="p-4 md:w-1/3 flex">
+              <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-green-100 text-green-500 mb-4 flex-shrink-0">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="flex-grow pl-6">
+                <h2 class="text-gray-900 text-lg title-font font-medium mb-2">The Impact of Fake News</h2>
+                <p class="leading-relaxed text-base">
+                  Fake news influences elections, spreads health misinformation, and fuels conflicts. It creates panic and damages reputations. Combating it requires public awareness, responsible media consumption, and efforts from governments and tech companies.</p>
+                <a href="https://www.internetmatters.org/issues/fake-news-and-misinformation-advice-hub/learn-about-fake-news-to-support-children/" class="mt-3 text-green-500 inline-flex items-center">Learn More
+                  <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+<!-- About Section -->
+<!-- About Section -->
+<section id="about" class="bg-gray-100 text-gray-900 py-24">
+  <div class="container mx-auto px-5">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-extrabold text-gray-800">About Us</h2>
+      <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
+        Our mission is to combat misinformation using cutting-edge machine learning techniques. Our platform helps users verify news authenticity, ensuring a more informed and responsible digital world.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-12">
+      <!-- Vision Card -->
+      <div class="bg-white p-8 shadow-lg rounded-lg transform transition hover:scale-105">
+        <div class="flex items-center mb-4">
+          <div class="w-14 h-14 flex items-center justify-center bg-green-200 text-green-600 rounded-full">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <h3 class="ml-4 text-2xl font-semibold">Our Vision</h3>
+        </div>
+        <p class="text-lg text-gray-700">
+          To create a world where truth prevails over misinformation, empowering users with AI-driven fact-checking.
+        </p>
+      </div>
+
+      <!-- Approach Card -->
+      <div class="bg-white p-8 shadow-lg rounded-lg transform transition hover:scale-105">
+        <div class="flex items-center mb-4">
+          <div class="w-14 h-14 flex items-center justify-center bg-blue-200 text-blue-600 rounded-full">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <h3 class="ml-4 text-2xl font-semibold">Our Approach</h3>
+        </div>
+        <p class="text-lg text-gray-700">
+          We use advanced Natural Language Processing and AI models to analyze news content and determine its credibility.
+        </p>
+      </div>
+
+      <!-- Team Card -->
+      <div class="bg-white p-8 shadow-lg rounded-lg transform transition hover:scale-105">
+        <div class="flex items-center mb-4">
+          <div class="w-14 h-14 flex items-center justify-center bg-purple-200 text-purple-600 rounded-full">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="6" cy="6" r="3"></circle>
+              <circle cx="6" cy="18" r="3"></circle>
+              <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+            </svg>
+          </div>
+          <h3 class="ml-4 text-2xl font-semibold">Our Team</h3>
+        </div>
+        <p class="text-lg text-gray-700">
+          A dedicated group of AI researchers, data scientists, and developers committed to fighting fake news.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<div>
+
+
+      <footer class="text-gray-700 bg-gray-100 body-font">
+        <div class="container px-5 py-16 mx-auto">
+            <div class="flex flex-wrap md:text-left text-center order-first">
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-lg mb-3">Categories</h2>
+                    <nav class="list-none space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">First Link</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">Second Link</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">Third Link</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">Fourth Link</a></li>
+                    </nav>
+                </div>
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-lg mb-3">Quick Links</h2>
+                    <nav class="list-none space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">About Us</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">Contact</a></li>
+                    </nav>
+                </div>
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-lg mb-3">Support</h2>
+                    <nav class="list-none space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">Help Center</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">FAQ</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">Report Issue</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-green-500 transition">Terms & Conditions</a></li>
+                    </nav>
+                </div>
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-semibold text-gray-900 tracking-widest text-lg mb-3">Subscribe</h2>
+                    <div class="flex flex-col sm:flex-row items-center">
+                        <input type="text" placeholder="Enter your email"
+                            class="w-full bg-gray-200 text-gray-700 border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-500">
+                        <button class="ml-2 mt-3 sm:mt-0 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition">
+                            Subscribe
+                        </button>
+                    </div>
+                    <p class="text-gray-500 text-sm mt-3 text-center sm:text-left">
+                        Stay updated with our latest news and insights.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-200">
+            <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+                <a class="flex title-font font-medium items-center text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span class="ml-3 text-xl">Fake News Detection</span>
+                </a>
+                <span class="inline-flex sm:ml-auto mt-4 sm:mt-0 justify-center sm:justify-start space-x-3">
+                    <a href="#" class="text-gray-500 hover:text-green-500 transition">
+                        <svg fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-green-500 transition">
+                        <svg fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-green-500 transition">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-500 hover:text-green-500 transition">
+                        <svg fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+                            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+   
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap & Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Fake News Detection</title>
+
+    <style>
+        body {
+            background-color: #f3f4f6;
+        }
+
+        .btn-custom {
+            background-color: #10b981;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-custom:hover {
+            background-color: #059669;
+        }
+
+        .container-card {
+            max-width: 500px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-2">
+        <div class="container mx-auto flex flex-wrap p-3 flex-col md:flex-row items-center">
+            <a href="/" class="flex title-font font-medium items-center text-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-8 h-8 text-white p-1 bg-green-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span class="ml-2 text-lg font-semibold">Fake News Detection</span>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-sm justify-center">
+                <a href="/" class="mr-4 hover:text-gray-900">Home</a>
+                <a href="/prediction" class="mr-4 hover:text-gray-900">Prediction</a>
+                <a href="#" class="mr-4 hover:text-gray-900">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="news-sources-container" style="background-color: #edf2f7; padding: 40px 20px; text-align: center; font-size: 1.1rem; color: #2d3748; border-radius: 8px; margin-top: 40px;">
+        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 20px; color: #2d3748;">We will check the authenticity of news from the following top websites:</h2>
+        <div class="news-sources-list" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;">
+          
+          <a href="https://timesofindia.indiatimes.com/" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              Times of India
+            </div>
+          </a>
+      
+          <a href="https://www.ndtv.com/" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              NDTV
+            </div>
+          </a>
+      
+          <a href="https://www.bbc.com/news" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              BBC
+            </div>
+          </a>
+      
+          <a href="https://edition.cnn.com/" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              CNN
+            </div>
+          </a>
+      
+          <a href="https://www.hindustantimes.com/" target="_blank" style="text-decoration: none;">
+            <div class="news-source" style="background-color: #fff; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); font-size: 1rem; font-weight: bold; color: #38a169; transition: transform 0.3s ease-in-out; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+              Hindustan Times
+            </div>
+          </a>
+      
+        </div>
+      </section>
+
+    <!-- Main Section -->
+    <section class="text-gray-600 body-font py-12">
+        <div class="container px-5 mx-auto text-center">
+            <h2 class="text-sm text-green-500 tracking-widest font-medium uppercase mb-2">Machine Learning Project</h2>
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Fake News Detection</h1>
+            <p class="lg:w-2/3 mx-auto text-lg leading-relaxed text-gray-700">
+                "Unmask the Truth: Detect Fake News with AI Precision."
+            </p>
+
+            <!-- Prediction Output -->
+            {% if prediction_text %}
+            <p class="text-green-600 font-semibold text-xl mt-4">{{ prediction_text }}</p>
+            {% endif %}
+        </div>
+
+        <!-- Form Section -->
+        <div class="container mx-auto flex justify-center">
+            <div class="container-card">
+                <form action="/prediction" method="POST">
+                    <label for="news" class="block text-gray-700 font-semibold mb-2">Enter News Headline or Paste News URL</label>
+                    <textarea id="news" name="news" rows="4" placeholder="e.g., Breaking news or https://timesofindia.indiatimes.com/..." required
+                        class="w-full border border-gray-300 rounded-lg p-3 mb-4 focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+
+
+
+                    <button type="submit"
+                        class="w-full btn-custom text-white font-bold py-3 px-6 rounded-lg">
+                        Predict Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
